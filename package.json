@@ -1,0 +1,27 @@
+{
+  "name": "kwish2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "build:lint": "eslint public/src src",
+    "build:sass": "node-sass --output-style=compressed public/sass/kwish.scss public/dist/kwish.min.css",
+    "build": "run-s build:sass build:lint",
+    "dev:sass": "node-sass --watch --output-style=compressed public/sass/kwish.scss public/dist/kwish.min.css",
+    "dev:start" : "nodemon src/server.js",
+    "dev": "run-p dev:sass dev:start"
+  },
+  "author": "",
+  "license": "AGPL-3.0",
+  "engine": ">=8.0.0",
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

@@ -1,0 +1,118 @@
+@import "fonts";
+
+html, body {
+    height : 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+body {
+    background-color: pink;
+    height : 100%;
+    min-height: 100%;
+    position: relative;
+
+    display: flex;
+    flex-flow : column nowrap;
+
+    & > header{ 
+       flex: 0 1 80px; 
+       background-color: grey;
+    }
+    & > footer{ 
+       flex: 0 1 30px; 
+       background-color: grey;
+    }
+    & > main {
+        height : calc(100vh - 110px);
+        flex: 1 1 auto ;
+       background-color: white;
+       overflow-y: auto;
+    }
+}
+
+.kitems {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 95%;
+    margin: auto;
+
+    .kitem {
+
+        max-width: 330px;
+        height: 425px;
+        flex: 0 1 330px;
+        border: solid 1px grey;
+        margin: 10px;
+        padding: 10px;
+
+        display: flex;
+        flex-flow: column nowrap;
+        
+        .headmage{
+            position: relative;
+            max-height: 150px;
+            flex: 0 1 150px;
+            text-align: center;
+            border: solid 1px #333;
+            img {
+                height: 100%;
+            }
+        }
+
+        h2 {
+            margin: 5px 0;
+        }
+
+        p {
+            //background-color : purple;
+            flex: 1 0 auto;
+        }
+        .price {
+            flex: 0 0 1em;
+            margin: 5px 0;
+
+            progress {
+                width: 75%;
+            }
+
+            .amount:after {
+                text-align: right;
+                content: '€';
+            }
+        }
+        .actions {
+
+            margin: 5px 0;
+            //background-color : green;
+
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                width: 49%;
+                position : relative;
+                margin-bottom: 3px;
+                a {
+                    
+                    display: inline-block;
+                    padding: 5px;
+                    width: 100%; 
+                    border: solid 1px #333;
+                    text-decoration: none;
+                } 
+            }
+        }       
+    }
+}
