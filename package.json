@@ -9,7 +9,7 @@
     "build:sass": "node-sass --output-style=compressed public/sass/kwish.scss public/dist/kwish.min.css",
     "build": "run-s build:sass build:lint",
     "dev:sass": "node-sass --watch --output-style=compressed public/sass/kwish.scss public/dist/kwish.min.css",
-    "dev:start" : "nodemon src/server.js",
+    "dev:start": "nodemon src/server.js",
     "dev": "run-p dev:sass dev:start"
   },
   "author": "",
@@ -22,6 +22,7 @@
     "npm-run-all": "^4.0.2"
   },
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "rethinkdb": "^2.3.3"
   }
 }
