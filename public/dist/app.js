@@ -466,6 +466,12 @@
 
 require('whatwg-fetch');
 
+var _modal = require('./components/modal.js');
+
+var _modal2 = _interopRequireDefault(_modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var kitems = {};
 
 var kitemsContainer = document.querySelector('.kitems');
@@ -477,7 +483,7 @@ var getKitemContent = function getKitemContent(item) {
     } else if (item.bought) {
         content += '<strong>Article acheté</strong>';
     } else {
-        content += '\n                <ul class="actions">\n                    <li><a href="' + item.url + '" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>\n                    <li><a href="#" class="book"><span class="icon icon-lock"></span> R\xE9server</a></li>\n                    <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>\n                    <li><a href="#"><span class="icon icon-squirrel"></span> Participer</a></li>\n                </ul>';
+        content += '\n                <ul class="actions">\n                    <li><a href="' + item.url + '" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>\n                    <li><a href="#" class="book"><span class="icon icon-lock"></span> R\xE9server</a></li>\n                    <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>\n                    <li><a href="#" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>\n                </ul>';
     }
     return content;
 };
@@ -519,6 +525,10 @@ var buyItem = function buyItem(itemId) {
     });
 };
 
+var participate = function participate(itemId) {
+    (0, _modal2.default)('foo', '<strong>Bar</strong').open();
+};
+
 var kitemActions = function kitemActions() {
 
     kitemsContainer.addEventListener('click', function (e) {
@@ -530,6 +540,10 @@ var kitemActions = function kitemActions() {
             if (e.target.matches('.buy')) {
                 e.preventDefault();
                 buyItem(e.target.closest('.kitem').dataset.id);
+            }
+            if (e.target.matches('.participate')) {
+                e.preventDefault();
+                participate(e.target.closest('.kitem').dataset.id);
             }
         }
     });
@@ -578,4 +592,84 @@ var loadList = function loadList() {
 
 loadList();
 
-},{"whatwg-fetch":1}]},{},[2]);
+},{"./components/modal.js":3,"whatwg-fetch":1}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+
+var modalFactory = function modalFactory() {
+    var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    var closeLabel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'Ok';
+
+
+    var modalContainer = document.querySelector('body');
+
+    var removePreviousModals = function removePreviousModals() {
+        var previousModals = modalContainer.querySelectorAll('.modal');
+        if (previousModals.length) {
+            //[].forEach.apply(previousModals, modal => modalContainer.removeChild(modal));
+        }
+    };
+
+    var modal = {
+        init: function init() {
+            var _this = this;
+
+            var addModal = function addModal() {
+
+                var modalElt = document.createElement('div');
+                modalElt.classList.add('modal');
+                modalElt.innerHTML = '\n                    <h1>' + title + '</h1>\n                    <div>\n                        ' + content + '\n                    </div>\n                    <div class="actions">\n                        <button>' + closeLabel + '</button>\n                    </div>\n                ';
+
+                modalElt.querySelector('button').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    _this.close();
+                });
+                modalContainer.appendChild(modalElt);
+
+                return modalElt;
+            };
+
+            var addOverlay = function addOverlay() {
+                var overlays = modalContainer.querySelectorAll('.overlay');
+
+                if (overlays.length === 0) {
+                    var overlay = document.createElement('div');
+                    overlay.classList.add('overlay');
+                    modalContainer.appendChild(overlay);
+                    return overlay;
+                }
+
+                return overlays[0];
+            };
+
+            this.overlayElt = addOverlay();
+            this.modalElt = addModal();
+
+            return this;
+        },
+        open: function open() {
+            removePreviousModals();
+
+            this.overlayElt.classList.add('active');
+            this.modalElt.classList.add('active');
+
+            return this;
+        },
+        close: function close() {
+            this.overlayElt.classList.remove('active');
+            this.modalElt.classList.remove('active');
+
+            return this;
+        }
+    };
+    return modal.init();
+};
+
+exports.default = modalFactory;
+
+},{}]},{},[2]);

@@ -36,7 +36,10 @@ body {
     }
     & > footer{
        flex: 0 1 30px;
-       background-color: grey;
+       background-color: #333;
+       color: #fff;
+       padding-top: 5px;
+       text-align: center;
     }
     & > main {
         height : calc(100vh - 140px);
@@ -45,99 +48,5 @@ body {
     }
 }
 
-.legend {
-    display: none;
-}
-
-.kitems {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    width: 95%;
-    margin: auto;
-
-    .kitem {
-
-        max-width: 330px;
-        height: 425px;
-        flex: 0 1 330px;
-        border: solid 1px #ddd;
-        border-radius: 2px;
-        background-color: #fff;
-        box-shadow: 1px 1px 2px 1px #ccc;
-        margin: 10px;
-        padding: 10px;
-
-        display: flex;
-        flex-flow: column nowrap;
-
-        .headmage{
-            position: relative;
-            max-height: 150px;
-            flex: 0 1 150px;
-            text-align: center;
-            border: solid 1px #ddd;
-            img {
-                height: 100%;
-            }
-        }
-
-        h2 {
-            margin: 5px 0;
-        }
-
-        p {
-            //background-color : purple;
-            flex: 1 0 auto;
-        }
-        .price {
-            flex: 0 0 1em;
-            margin: 5px 0;
-
-            progress {
-                width: 75%;
-                border: solid 1px #ddd;
-                border-radius: 2px
-            }
-            progress::-webkit-progress-value {
-                background-color: #9D5C9D;
-            }
-            progress::-moz-progress-bar {
-                background-color: #9D5C9D;
-            }
-            .amount:after {
-                text-align: right;
-                content: '€';
-            }
-        }
-        .actions {
-
-            margin: 5px 0;
-
-            list-style-type: none;
-
-            li {
-                display: inline-block;
-                width: 49%;
-                position : relative;
-                margin-bottom: 3px;
-                a {
-
-                    display: inline-block;
-                    padding: 5px;
-                    width: 100%;
-                    background-color: white;
-                    border: solid 1px #5d7e9e;
-                    border-radius: 3px;
-                    color: #5d7e9e;
-                    text-decoration: none;
-
-                    &:hover, &:focus, &:active {
-                        color: #415C75;
-                    }
-                }
-            }
-        }
-    }
-}
+@import "components/kitem";
+@import "components/modal";

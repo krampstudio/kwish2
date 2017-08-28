@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import modal from './components/modal.js';
 
 const kitems = {};
 
@@ -28,7 +29,7 @@ const getKitemContent = item => {
                     <li><a href="${item.url}" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>
                     <li><a href="#" class="book"><span class="icon icon-lock"></span> Réserver</a></li>
                     <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>
-                    <li><a href="#"><span class="icon icon-squirrel"></span> Participer</a></li>
+                    <li><a href="#" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>
                 </ul>`;
     }
     return content;
@@ -69,6 +70,10 @@ const buyItem = itemId => {
         .catch( err => console.error(err));
 };
 
+const participate = itemId => {
+    modal('foo', '<strong>Bar</strong').open();
+};
+
 const kitemActions = () => {
 
     kitemsContainer.addEventListener('click', e => {
@@ -80,6 +85,10 @@ const kitemActions = () => {
             if(e.target.matches('.buy')) {
                 e.preventDefault();
                 buyItem(e.target.closest('.kitem').dataset.id);
+            }
+            if(e.target.matches('.participate')) {
+                e.preventDefault();
+                participate(e.target.closest('.kitem').dataset.id);
             }
         }
     });
