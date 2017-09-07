@@ -5,8 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "start": "run-p db app",
-    "app" : "node src/server.js",
-    "db" : "rethinkdb",
+    "prod:start" : "node src/server.js",
+    "prod:db"  : "rethinkdb --no-http-admin",
     "build:lint": "eslint public/src src",
     "build:sass": "node-sass --output-style=compressed public/sass/kwish.scss public/dist/kwish.min.css",
     "build:js": "browserify public/js/app.js -o public/dist/app.js -t [ babelify --presets [ es2015 ] ]  | uglifyjs -mc -o dist/app.min.js",
@@ -14,6 +14,7 @@
     "dev:sass": "node-sass --watch --output-style=compressed public/sass/kwish.scss public/dist/kwish.min.css",
     "dev:js": "watchify public/js/app.js -o public/dist/app.js -t [ babelify --presets [ es2015 ] ]",
     "dev:start": "nodemon --watch src src/server.js",
+    "dev:db" : "rethinkdb",
     "dev": "run-p db dev:sass dev:js dev:start"
   },
   "author": "",
