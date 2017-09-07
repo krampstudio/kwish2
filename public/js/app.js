@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-import modal from './components/modal.js';
+import confirmComponent from './components/confirm.js';
 
 const kitems = {};
 
@@ -8,34 +8,36 @@ const kitemsContainer = document.querySelector('.kitems');
 const getKitemContent = item => {
     let content  = `
                 <div class="headmage">
-                    <img src="${item.image}" alt="${item.name}">
-                </div>
-                <h2>${item.name}</h2>
-                <div>
-                    <span class="icon icon-${item.exact ? 'alert' : 'gift'}"></span> ${item.exact ? 'Modèle exacte' : 'Modèle libre / Idée cadeau'}
-                </div>
-                <p class="desc">${item.desc}</p>
-                <div class="price">
-                    <progress value="${item.funded}" max="${item.price}" title="Reste ${item.price - item.funded} €"></progress>
-                    <span class="amount">${item.price}</span>
-                </div>`;
-    if(item.booked){
-        content += '<strong>Article réservé</strong>';
-    } else if (item.bought){
-        content += '<strong>Article acheté</strong>';
-    } else {
-        content += `
-                <ul class="actions">
-                    <li><a href="${item.url}" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>
-                    <li><a href="#" class="book"><span class="icon icon-lock"></span> Réserver</a></li>
-                    <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>
-                    <li><a href="#" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>
-                </ul>`;
-    }
-    return content;
-};
+                        <a href="${item.url}" target="_blank">
+                            <img src="${item.image}" alt="${item.name}">
+                        </a>
+                    </div>
+                    <h2>${item.name}</h2>
+                    <div class="warn">
+                        <span class="icon icon-${item.exact ? 'alert' : 'gift'}"></span> ${item.exact ? 'Modèle exacte' : 'Modèle libre / Idée cadeau'}
+                    </div>
+                    <p class="desc">${item.desc}</p>
+                    <div class="price">
+                        <progress value="${item.funded}" max="${item.price}" title="Reste ${item.price - item.funded} €"></progress>
+                        <span class="amount">${item.price}</span>
+                    </div>`;
+        if(item.booked){
+            content += '<strong>Article réservé</strong>';
+        } else if (item.bought){
+            content += '<strong>Article acheté</strong>';
+        } else {
+            content += `
+                    <ul class="actions">
+                        <li><a href="${item.url}" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>
+                        <li><a href="#" class="book"><span class="icon icon-lock"></span> Réserver</a></li>
+                        <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>
+                        <li><a href="#" class="participate"://www.leetchi.com/c/naissance-de-b-chevrier-boquet" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>
+                    </ul>`;
+        }
+        return content;
+    };
 
-const addItem = item => {
+    const addItem = item => {
     const kitem = document.createElement('article');
     kitem.classList.add('kitem');
     kitem.dataset.id = item.id;
@@ -50,28 +52,35 @@ const reloadItem = item => {
 const addKitems = () => Object.values(kitems).forEach(addItem);
 
 const bookItem = itemId => {
-    fetch(`/kitem/book?item=${itemId}`, { method : 'post' })
-        .then( response => {
-            if(response.status === 200){
-                kitems[itemId].booked = true;
-                reloadItem(kitems[itemId]);
-            }
-        })
-        .catch( err => console.error(err));
+    confirmComponent('Veuiller confirmer la réservation', 'Une fois confirmé, l\'article ne sera plus accessible', () => {
+        fetch(`/kitem/book?item=${itemId}`, { method : 'post' })
+            .then( response => {
+                if(response.status === 200){
+                    kitems[itemId].booked = true;
+                    reloadItem(kitems[itemId]);
+                }
+            })
+            .catch( err => console.error(err));
+    }).open();
 };
 
 const buyItem = itemId => {
-    fetch(`/kitem/buy?item=${itemId}`, { method : 'post' })
-        .then( response => {
-            console.log(response);
-            kitems[itemId].bought = true;
-            reloadItem(kitems[itemId]);
-        })
+    confirmComponent('Veuiller confirmer l\'achat', 'Une fois confirmé, l\'article ne sera plus accessible', () => {
+        fetch(`/kitem/buy?item=${itemId}`, { method : 'post' })
+            .then( response => {
+                if(response.status === 200){
+                    kitems[itemId].bought = true;
+                    reloadItem(kitems[itemId]);
+                }
+            })
         .catch( err => console.error(err));
+    }).open();
 };
 
 const participate = itemId => {
-    modal('foo', '<strong>Bar</strong').open();
+    confirmComponent('Vous souhaitez participer ?', 'Vous serez redirigé sur notre cagnotte Leetchi.', () => {
+        window.open('https://www.leetchi.com/c/naissance-de-b-chevrier-boquet', '_blank');
+    }).open();
 };
 
 const kitemActions = () => {
@@ -95,7 +104,7 @@ const kitemActions = () => {
 };
 
 const listDetails = list => {
-    document.querySelector('body > header > h2').textContent = list.name;
+    document.querySelector('body > header > h1').textContent = list.title;
     document.querySelector('main .details').textContent = list.desc;
 };
 

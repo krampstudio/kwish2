@@ -1,13 +1,13 @@
 
 
-const modalFactory = function (title = '', content = '', closeLabel = 'Ok'){
+const modalFactory = function (title = '', content = '', buttons = [{ label : 'Ok', close : true, action : () => {} }]){
 
     const modalContainer = document.querySelector('body');
 
     const removePreviousModals = () => {
         const previousModals = modalContainer.querySelectorAll('.modal');
         if(previousModals.length){
-            [].forEach.call(previousModals, modal => modalContainer.removeChild(modal));
+            //[].forEach.call(previousModals, modal => modalContainer.removeChild(modal));
         }
     };
 
@@ -22,15 +22,27 @@ const modalFactory = function (title = '', content = '', closeLabel = 'Ok'){
                     <div>
                         ${content}
                     </div>
-                    <div class="actions">
-                        <button>${closeLabel}</button>
-                    </div>
+                    <div class="actions"></div>
                 `;
 
-                modalElt.querySelector('button').addEventListener('click', e => {
-                    e.preventDefault();
-                    this.close();
+                const actions = modalElt.querySelector('.actions');
+                buttons.forEach( button => {
+                    const buttonElt = document.createElement('button');
+                    buttonElt.textContent = button.label;
+                    if(button.close || button.action){
+                        buttonElt.addEventListener('click', e => {
+                            e.preventDefault();
+                            if(button.close){
+                                this.close();
+                            }
+                            if(typeof button.action === 'function'){
+                                button.action.call();
+                            }
+                        });
+                    }
+                    actions.appendChild(buttonElt);
                 });
+
                 modalContainer.appendChild(modalElt);
 
                 return modalElt;
@@ -49,6 +61,8 @@ const modalFactory = function (title = '', content = '', closeLabel = 'Ok'){
                 return overlays[0];
             };
 
+            removePreviousModals();
+
             this.overlayElt = addOverlay();
             this.modalElt = addModal();
 
@@ -56,7 +70,7 @@ const modalFactory = function (title = '', content = '', closeLabel = 'Ok'){
         },
 
         open(){
-            removePreviousModals();
+
 
             this.overlayElt.classList.add('active');
             this.modalElt.classList.add('active');

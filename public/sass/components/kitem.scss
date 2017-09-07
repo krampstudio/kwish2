@@ -1,3 +1,7 @@
+
+$progressColor : #16A085;
+$actionColor : #336E7B;
+
 .kitems {
     display: flex;
     flex-flow: row wrap;
@@ -9,7 +13,7 @@
     .kitem {
 
         max-width: 330px;
-        height: 425px;
+        height: 450px;
         flex: 0 1 330px;
         border: solid 1px #ddd;
         border-radius: 2px;
@@ -26,19 +30,37 @@
             max-height: 150px;
             flex: 0 1 150px;
             text-align: center;
-            border: solid 1px #ddd;
+            border: solid 1px $mainColor;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
             img {
                 height: 100%;
             }
         }
 
         h2 {
-            margin: 5px 0;
+            margin: 0;
+            background-color: $mainColor;
+            text-align:center;
+            padding: 5px;
+            margin-bottom: 10px;
+            color: white;
+            font-size: 1.1em;
+            border: solid 1px $mainColor;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
         }
 
         p {
             //background-color : purple;
             flex: 1 0 auto;
+        }
+        .warn {
+            color: #D64541;
+            font-size: .9em;
+        }
+        .desc {
+            margin-top: 10px;
         }
         .price {
             flex: 0 0 1em;
@@ -50,10 +72,10 @@
                 border-radius: 2px
             }
             progress::-webkit-progress-value {
-                background-color: #9D5C9D;
+                background-color: $progressColor;
             }
             progress::-moz-progress-bar {
-                background-color: #9D5C9D;
+                background-color: $progressColor;
             }
             .amount:after {
                 text-align: right;
@@ -74,16 +96,17 @@
                 a {
 
                     display: inline-block;
-                    padding: 5px;
+                    padding: 10px;
                     width: 100%;
                     background-color: white;
-                    border: solid 1px #5d7e9e;
+                    border: solid 2px $actionColor;
                     border-radius: 3px;
-                    color: #5d7e9e;
+                    color: $actionColor;
                     text-decoration: none;
+                    font-weight: bold;
 
                     &:hover, &:focus, &:active {
-                        color: #415C75;
+                        color: #333;
                     }
                 }
             }

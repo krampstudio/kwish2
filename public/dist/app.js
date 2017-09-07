@@ -466,9 +466,9 @@
 
 require('whatwg-fetch');
 
-var _modal = require('./components/modal.js');
+var _confirm = require('./components/confirm.js');
 
-var _modal2 = _interopRequireDefault(_modal);
+var _confirm2 = _interopRequireDefault(_confirm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -477,13 +477,13 @@ var kitems = {};
 var kitemsContainer = document.querySelector('.kitems');
 
 var getKitemContent = function getKitemContent(item) {
-    var content = '\n                <div class="headmage">\n                    <img src="' + item.image + '" alt="' + item.name + '">\n                </div>\n                <h2>' + item.name + '</h2>\n                <div>\n                    <span class="icon icon-' + (item.exact ? 'alert' : 'gift') + '"></span> ' + (item.exact ? 'Modèle exacte' : 'Modèle libre / Idée cadeau') + '\n                </div>\n                <p class="desc">' + item.desc + '</p>\n                <div class="price">\n                    <progress value="' + item.funded + '" max="' + item.price + '" title="Reste ' + (item.price - item.funded) + ' \u20AC"></progress>\n                    <span class="amount">' + item.price + '</span>\n                </div>';
+    var content = '\n                <div class="headmage">\n                        <a href="' + item.url + '" target="_blank">\n                            <img src="' + item.image + '" alt="' + item.name + '">\n                        </a>\n                    </div>\n                    <h2>' + item.name + '</h2>\n                    <div class="warn">\n                        <span class="icon icon-' + (item.exact ? 'alert' : 'gift') + '"></span> ' + (item.exact ? 'Modèle exacte' : 'Modèle libre / Idée cadeau') + '\n                    </div>\n                    <p class="desc">' + item.desc + '</p>\n                    <div class="price">\n                        <progress value="' + item.funded + '" max="' + item.price + '" title="Reste ' + (item.price - item.funded) + ' \u20AC"></progress>\n                        <span class="amount">' + item.price + '</span>\n                    </div>';
     if (item.booked) {
         content += '<strong>Article réservé</strong>';
     } else if (item.bought) {
         content += '<strong>Article acheté</strong>';
     } else {
-        content += '\n                <ul class="actions">\n                    <li><a href="' + item.url + '" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>\n                    <li><a href="#" class="book"><span class="icon icon-lock"></span> R\xE9server</a></li>\n                    <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>\n                    <li><a href="#" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>\n                </ul>';
+        content += '\n                    <ul class="actions">\n                        <li><a href="' + item.url + '" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>\n                        <li><a href="#" class="book"><span class="icon icon-lock"></span> R\xE9server</a></li>\n                        <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>\n                        <li><a href="#" class="participate"://www.leetchi.com/c/naissance-de-b-chevrier-boquet" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>\n                    </ul>';
     }
     return content;
 };
@@ -505,28 +505,35 @@ var addKitems = function addKitems() {
 };
 
 var bookItem = function bookItem(itemId) {
-    fetch('/kitem/book?item=' + itemId, { method: 'post' }).then(function (response) {
-        if (response.status === 200) {
-            kitems[itemId].booked = true;
-            reloadItem(kitems[itemId]);
-        }
-    }).catch(function (err) {
-        return console.error(err);
-    });
+    (0, _confirm2.default)('Veuiller confirmer la réservation', 'Une fois confirmé, l\'article ne sera plus accessible', function () {
+        fetch('/kitem/book?item=' + itemId, { method: 'post' }).then(function (response) {
+            if (response.status === 200) {
+                kitems[itemId].booked = true;
+                reloadItem(kitems[itemId]);
+            }
+        }).catch(function (err) {
+            return console.error(err);
+        });
+    }).open();
 };
 
 var buyItem = function buyItem(itemId) {
-    fetch('/kitem/buy?item=' + itemId, { method: 'post' }).then(function (response) {
-        console.log(response);
-        kitems[itemId].bought = true;
-        reloadItem(kitems[itemId]);
-    }).catch(function (err) {
-        return console.error(err);
-    });
+    (0, _confirm2.default)('Veuiller confirmer l\'achat', 'Une fois confirmé, l\'article ne sera plus accessible', function () {
+        fetch('/kitem/buy?item=' + itemId, { method: 'post' }).then(function (response) {
+            if (response.status === 200) {
+                kitems[itemId].bought = true;
+                reloadItem(kitems[itemId]);
+            }
+        }).catch(function (err) {
+            return console.error(err);
+        });
+    }).open();
 };
 
 var participate = function participate(itemId) {
-    (0, _modal2.default)('foo', '<strong>Bar</strong').open();
+    (0, _confirm2.default)('Vous souhaitez participer ?', 'Vous serez redirigé sur notre cagnotte Leetchi.', function () {
+        window.open('https://www.leetchi.com/c/naissance-de-b-chevrier-boquet', '_blank');
+    }).open();
 };
 
 var kitemActions = function kitemActions() {
@@ -550,7 +557,7 @@ var kitemActions = function kitemActions() {
 };
 
 var listDetails = function listDetails(list) {
-    document.querySelector('body > header > h2').textContent = list.name;
+    document.querySelector('body > header > h1').textContent = list.title;
     document.querySelector('main .details').textContent = list.desc;
 };
 
@@ -592,7 +599,38 @@ var loadList = function loadList() {
 
 loadList();
 
-},{"./components/modal.js":3,"whatwg-fetch":1}],3:[function(require,module,exports){
+},{"./components/confirm.js":3,"whatwg-fetch":1}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _modal = require('./modal.js');
+
+var _modal2 = _interopRequireDefault(_modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var confirmFactory = function confirmFactory() {
+    var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Please confirm';
+    var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    var done = arguments[2];
+
+
+    return (0, _modal2.default)(title, message, [{
+        label: 'Annuler',
+        close: true
+    }, {
+        label: 'Confirmer',
+        close: true,
+        action: done
+    }]);
+};
+
+exports.default = confirmFactory;
+
+},{"./modal.js":4}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -603,7 +641,7 @@ Object.defineProperty(exports, "__esModule", {
 var modalFactory = function modalFactory() {
     var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
     var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-    var closeLabel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'Ok';
+    var buttons = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [{ label: 'Ok', close: true, action: function action() {} }];
 
 
     var modalContainer = document.querySelector('body');
@@ -611,7 +649,7 @@ var modalFactory = function modalFactory() {
     var removePreviousModals = function removePreviousModals() {
         var previousModals = modalContainer.querySelectorAll('.modal');
         if (previousModals.length) {
-            //[].forEach.apply(previousModals, modal => modalContainer.removeChild(modal));
+            //[].forEach.call(previousModals, modal => modalContainer.removeChild(modal));
         }
     };
 
@@ -623,12 +661,26 @@ var modalFactory = function modalFactory() {
 
                 var modalElt = document.createElement('div');
                 modalElt.classList.add('modal');
-                modalElt.innerHTML = '\n                    <h1>' + title + '</h1>\n                    <div>\n                        ' + content + '\n                    </div>\n                    <div class="actions">\n                        <button>' + closeLabel + '</button>\n                    </div>\n                ';
+                modalElt.innerHTML = '\n                    <h1>' + title + '</h1>\n                    <div>\n                        ' + content + '\n                    </div>\n                    <div class="actions"></div>\n                ';
 
-                modalElt.querySelector('button').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    _this.close();
+                var actions = modalElt.querySelector('.actions');
+                buttons.forEach(function (button) {
+                    var buttonElt = document.createElement('button');
+                    buttonElt.textContent = button.label;
+                    if (button.close || button.action) {
+                        buttonElt.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            if (button.close) {
+                                _this.close();
+                            }
+                            if (typeof button.action === 'function') {
+                                button.action.call();
+                            }
+                        });
+                    }
+                    actions.appendChild(buttonElt);
                 });
+
                 modalContainer.appendChild(modalElt);
 
                 return modalElt;
@@ -647,13 +699,14 @@ var modalFactory = function modalFactory() {
                 return overlays[0];
             };
 
+            removePreviousModals();
+
             this.overlayElt = addOverlay();
             this.modalElt = addModal();
 
             return this;
         },
         open: function open() {
-            removePreviousModals();
 
             this.overlayElt.classList.add('active');
             this.modalElt.classList.add('active');
