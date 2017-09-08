@@ -5,21 +5,19 @@ $actionColor : #336E7B;
 .kitems {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: stretch;
-    width: 95%;
-    margin: auto;
 
     .kitem {
-
-        max-width: 330px;
+        width: 400px;
+        max-width: 400px;
         height: 450px;
-        flex: 0 1 330px;
+        flex: 0 1 400px;;
         border: solid 1px #ddd;
         border-radius: 2px;
         background-color: #fff;
         box-shadow: 1px 1px 2px 1px #ccc;
-        margin: 10px;
+        margin: .5em;
         padding: 10px;
 
         display: flex;
@@ -43,9 +41,9 @@ $actionColor : #336E7B;
             background-color: $mainColor;
             text-align:center;
             padding: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 1em;
             color: white;
-            font-size: 1.1em;
+            font-size: 1.2em;
             border: solid 1px $mainColor;
             border-bottom-left-radius: 3px;
             border-bottom-right-radius: 3px;
@@ -60,7 +58,7 @@ $actionColor : #336E7B;
             font-size: .9em;
         }
         .desc {
-            margin-top: 10px;
+            margin-top: 1em;
         }
         .price {
             flex: 0 0 1em;
@@ -84,19 +82,17 @@ $actionColor : #336E7B;
         }
         .actions {
 
-            margin: 5px 0;
-
             list-style-type: none;
 
             li {
                 display: inline-block;
-                width: 49%;
+                width: calc(50% - 1em);
                 position : relative;
-                margin-bottom: 3px;
+                margin: .25em;
                 a {
 
                     display: inline-block;
-                    padding: 10px;
+                    padding: .5em;
                     width: 100%;
                     background-color: white;
                     border: solid 2px $actionColor;
@@ -110,6 +106,20 @@ $actionColor : #336E7B;
                     }
                 }
             }
+        }
+    }
+}
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .kitems .kitem {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 auto;
+        height: 950px;
+         .headmage{
+            max-height: 300px;
+            flex: 0 1 300px;
         }
     }
 }
