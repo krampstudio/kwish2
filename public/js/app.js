@@ -120,7 +120,7 @@ const getListName = () => {
 };
 
 const loadList = () => {
-    const name = getListName();
+    const name = getListName() || 'berem2';
     if(name){
         fetch(`/klist/${name}`)
             .then( result => result.json())
