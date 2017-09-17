@@ -7,7 +7,7 @@ const modalFactory = function (title = '', content = '', buttons = [{ label : 'O
     const removePreviousModals = () => {
         const previousModals = modalContainer.querySelectorAll('.modal');
         if(previousModals.length){
-            //[].forEach.call(previousModals, modal => modalContainer.removeChild(modal));
+            [].forEach.call(previousModals, modal => modalContainer.removeChild(modal));
         }
     };
 
@@ -22,6 +22,9 @@ const modalFactory = function (title = '', content = '', buttons = [{ label : 'O
                     <div>
                         ${content}
                     </div>
+                    <form>
+                        <textarea name="comment" placeholder="Un petit mot, un commentaire, merci"></textarea>
+                    </form>
                     <div class="actions"></div>
                 `;
 
@@ -36,7 +39,7 @@ const modalFactory = function (title = '', content = '', buttons = [{ label : 'O
                                 this.close();
                             }
                             if(typeof button.action === 'function'){
-                                button.action.call();
+                                button.action.call(null, modalElt);
                             }
                         });
                     }

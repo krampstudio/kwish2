@@ -12,19 +12,28 @@ const kitemService = function (){
                 .then( cursor => cursor.toArray());
         },
 
-        bookItem(itemId){
+        bookItem(itemId, comment){
             if(typeof itemId !== 'string' || itemId.trim().length === 0){
                 return Promise.reject(new TypeError('Please give a valid kitem id'));
             }
-            return run(r.table('kitems').get(itemId).update({ 'booked' : true }));
+            let data = { booked : true };
+            if(typeof comment === 'string' && comment.length > 0 && comment.length < 2048){
+                data.comment = comment;
+            }
+
+            return run(r.table('kitems').get(itemId).update(data));
         },
 
 
-        buyItem(itemId){
+        buyItem(itemId, comment){
             if(typeof itemId !== 'string' || itemId.trim().length === 0){
                 return Promise.reject(new TypeError('Please give a valid kitem id'));
             }
-            return run(r.table('kitems').get(itemId).update({ 'bought' : true }));
+            let data = { bought : true };
+            if(typeof comment === 'string' && comment.length > 0 && comment.length < 2048){
+                data.comment = comment;
+            }
+            return run(r.table('kitems').get(itemId).update(data));
         }
     };
 };

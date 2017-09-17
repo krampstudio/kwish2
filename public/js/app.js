@@ -6,6 +6,7 @@ const kitems = {};
 const kitemsContainer = document.querySelector('.kitems');
 
 const getKitemContent = item => {
+    console.log(item);
     let content  = `
                 <div class="headmage">
                         <a href="${item.url}" target="_blank">
@@ -28,10 +29,13 @@ const getKitemContent = item => {
         } else {
             content += `
                     <ul class="actions">
-                        <li><a href="${item.url}" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>
+                        <li><a href="${item.url}" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>`;
+            if(!item.fundOnly){
+                content += `
                         <li><a href="#" class="book"><span class="icon icon-lock"></span> Réserver</a></li>
-                        <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>
-                        <li><a href="#" class="participate"://www.leetchi.com/c/naissance-de-b-chevrier-boquet" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>
+                        <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>`;
+            }
+                content += `<li><a href="#" class="participate"://www.leetchi.com/c/naissance-de-b-chevrier-boquet" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>
                     </ul>`;
         }
         return content;
@@ -52,27 +56,45 @@ const reloadItem = item => {
 const addKitems = () => Object.values(kitems).forEach(addItem);
 
 const bookItem = itemId => {
-    confirmComponent('Veuiller confirmer la réservation', 'Une fois confirmé, l\'article ne sera plus accessible', () => {
-        fetch(`/kitem/book?item=${itemId}`, { method : 'post' })
-            .then( response => {
-                if(response.status === 200){
-                    kitems[itemId].booked = true;
-                    reloadItem(kitems[itemId]);
-                }
-            })
-            .catch( err => console.error(err));
+    confirmComponent('Veuiller confirmer la réservation', 'Une fois confirmé, l\'article ne sera plus accessible', modalElt => {
+        const comment = modalElt.querySelector('textarea[name=comment]');
+        fetch(`/kitem/book?item=${itemId}`, {
+            method : 'POST',
+            body : JSON.stringify({
+                comment : comment.value
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then( response => {
+            if(response.status === 200){
+                kitems[itemId].booked = true;
+                reloadItem(kitems[itemId]);
+            }
+        })
+        .catch( err => console.error(err));
     }).open();
 };
 
 const buyItem = itemId => {
-    confirmComponent('Veuiller confirmer l\'achat', 'Une fois confirmé, l\'article ne sera plus accessible', () => {
-        fetch(`/kitem/buy?item=${itemId}`, { method : 'post' })
-            .then( response => {
-                if(response.status === 200){
-                    kitems[itemId].bought = true;
-                    reloadItem(kitems[itemId]);
-                }
-            })
+    confirmComponent('Veuiller confirmer l\'achat', 'Une fois confirmé, l\'article ne sera plus accessible', modalElt => {
+        const comment = modalElt.querySelector('textarea[name=comment]');
+        fetch(`/kitem/buy?item=${itemId}`, {
+            method : 'POST',
+            body : JSON.stringify({
+                comment : comment.value
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then( response => {
+            if(response.status === 200){
+                kitems[itemId].bought = true;
+                reloadItem(kitems[itemId]);
+            }
+        })
         .catch( err => console.error(err));
     }).open();
 };

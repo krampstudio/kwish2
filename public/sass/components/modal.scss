@@ -36,6 +36,15 @@ $actionColor : #336E7B;
         display: block;
     }
 
+    textarea {
+        margin: 1em 0;
+        height: 5em;
+        border: solid 1px #666;
+        border-radius: 3px;
+        width: 100%;
+        padding : .5em;
+    }
+
     .actions {
         text-align: right;
         margin-top: 4em;

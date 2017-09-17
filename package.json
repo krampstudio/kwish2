@@ -12,10 +12,10 @@
     "build:js": "browserify public/js/app.js -t [ babelify --presets [ es2015 ] ] | uglifyjs -o public/dist/app.min.js",
     "build": "run-s build:sass build:lint build:js",
     "dev:sass": "node-sass --watch --output-style=compressed public/sass/kwish.scss public/dist/kwish.min.css",
-    "dev:js": "watchify public/js/app.js -d -o public/dist/app.js -t [ babelify --presets [ es2015 ] ]",
+    "dev:js": "watchify public/js/app.js -d -v -o public/dist/app.js -t [ babelify --presets [ es2015 ] ] | uglifyjs -o public/dist/app.min.js",
     "dev:start": "nodemon --watch src src/server.js",
-    "dev:db": "rethinkdb",
-    "dev": "run-p prod:db dev:sass dev:js dev:start"
+    "dev:db": "rethinkdb --http-port 8081",
+    "dev": "run-p dev:db dev:sass dev:js dev:start"
   },
   "author": "",
   "license": "AGPL-3.0",
@@ -32,6 +32,7 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
+    "body-parser": "^1.18.1",
     "express": "^4.15.3",
     "rethinkdb": "^2.3.3",
     "whatwg-fetch": "^2.0.3"

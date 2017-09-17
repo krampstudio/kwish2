@@ -18,10 +18,11 @@ const kitemController = {
 
     bookItem(request, response, next){
         const itemId = request.query.item;
+        console.log(request.body);
+        const comment = request.body.comment;
         kitemService()
-            .bookItem(itemId)
+            .bookItem(itemId, comment)
             .then( done => {
-                console.log(done);
                 if(done){
                     return response.sendStatus(200);
                 }
@@ -33,10 +34,10 @@ const kitemController = {
 
     buyItem(request, response, next){
         const itemId = request.query.item;
+        const comment = request.body.comment;
         kitemService()
-            .buyItem(itemId)
+            .buyItem(itemId, comment)
             .then( done => {
-                console.log(done);
                 if(done){
                     return response.sendStatus(200);
                 }
