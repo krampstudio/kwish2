@@ -968,3 +968,8 @@
 2017-09-17T15:14:27.051463562 1.224600s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 43. Latest log index is 125.
 2017-09-17T15:14:27.531574843 1.704712s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 43.
 2017-09-17T15:14:27.534529796 1.707667s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 43. Latest log index is 125.
+2017-09-17T21:24:20.673516686 22194.846654s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-09-17T21:24:20.673756236 22194.846893s notice: Shutting down client connections...
+2017-09-17T21:24:20.675569901 22194.848707s notice: All client connections closed.
+2017-09-17T21:24:20.675583920 22194.848720s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-09-17T21:24:20.691792077 22194.864930s notice: Storage engine shut down.
