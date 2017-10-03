@@ -8,7 +8,7 @@ const router = function (app){
     app.post('/kitem/book', kitemController.bookItem);
     app.post('/kitem/buy', kitemController.buyItem);
 
-    app.get('/:name', (request, response) => response.sendFile('index.html', { root:  'public' } ));
+    app.get('/', (request, response) => response.sendFile('index.html', { root:  'public' } ));
 };
 
 module.exports = router;

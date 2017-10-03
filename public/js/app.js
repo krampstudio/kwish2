@@ -6,7 +6,6 @@ const kitems = {};
 const kitemsContainer = document.querySelector('.kitems');
 
 const getKitemContent = item => {
-    console.log(item);
     let content  = `
                 <div class="headmage">
                         <a href="${item.url}" target="_blank">
