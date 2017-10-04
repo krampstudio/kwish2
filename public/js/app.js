@@ -6,9 +6,12 @@ const kitems = {};
 const kitemsContainer = document.querySelector('.kitems');
 
 const getKitemContent = item => {
+    if(item.bought){
+        item.funded = item.price;
+    }
     let content  = `
                 <div class="headmage">
-                        <a href="${item.url}" target="_blank">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">
                             <img src="${item.image}" alt="${item.name}">
                         </a>
                     </div>
@@ -21,26 +24,31 @@ const getKitemContent = item => {
                         <progress value="${item.funded}" max="${item.price}" title="Reste ${item.price - item.funded} €"></progress>
                         <span class="amount">${item.price}</span>
                     </div>`;
-        if(item.booked){
-            content += '<strong>Article réservé</strong>';
-        } else if (item.bought){
-            content += '<strong>Article acheté</strong>';
-        } else {
-            content += `
+    if (item.bought){
+        content += '<strong>Article acheté</strong>';
+    } else if(item.booked){
+        content += `<strong>Article réservé</strong>
                     <ul class="actions">
-                        <li><a href="${item.url}" target="_blank" ><span class="icon icon-globe"></span> Site web</a></li>`;
-            if(!item.fundOnly){
-                content += `
-                        <li><a href="#" class="book"><span class="icon icon-lock"></span> Réserver</a></li>
-                        <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>`;
-            }
-                content += `<li><a href="#" class="participate"://www.leetchi.com/c/naissance-de-b-chevrier-boquet" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>
-                    </ul>`;
-        }
-        return content;
-    };
+                    <li><a href="${item.url}" target="_blank" rel="noopener noreferrer"><span class="icon icon-globe"></span> Site web</a></li>
+                    <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>
+                </ul>`;
 
-    const addItem = item => {
+    } else {
+        content += `
+                <ul class="actions">
+                    <li><a href="${item.url}" target="_blank" rel="noopener noreferrer"><span class="icon icon-globe"></span> Site web</a></li>`;
+        if(!item.fundOnly){
+            content += `
+                    <li><a href="#" class="book"><span class="icon icon-lock"></span> Réserver</a></li>
+                    <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>`;
+        }
+        content += `<li><a href="#" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>
+            </ul>`;
+    }
+    return content;
+};
+
+const addItem = item => {
     const kitem = document.createElement('article');
     kitem.classList.add('kitem');
     kitem.dataset.id = item.id;
@@ -65,14 +73,12 @@ const bookItem = itemId => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        .then( response => {
+        }).then( response => {
             if(response.status === 200){
                 kitems[itemId].booked = true;
                 reloadItem(kitems[itemId]);
             }
-        })
-        .catch( err => console.error(err));
+        }).catch( err => window.console.error(err));
     }).open();
 };
 
@@ -87,18 +93,16 @@ const buyItem = itemId => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        .then( response => {
+        }).then( response => {
             if(response.status === 200){
                 kitems[itemId].bought = true;
                 reloadItem(kitems[itemId]);
             }
-        })
-        .catch( err => console.error(err));
+        }).catch( err => window.console.error(err));
     }).open();
 };
 
-const participate = itemId => {
+const participate = () => {
     confirmComponent('Vous souhaitez participer ?', 'Vous serez redirigé sur notre cagnotte Leetchi.', () => {
         window.open('https://www.leetchi.com/c/naissance-de-b-chevrier-boquet', '_blank');
     }).open();
@@ -158,7 +162,7 @@ const loadList = () => {
                     addKitems();
                 }
             })
-            .catch( err => console.error(err));
+            .catch( err => window.console.error(err));
     }
 };
 

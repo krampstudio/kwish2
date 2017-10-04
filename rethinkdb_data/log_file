@@ -1015,3 +1015,24 @@
 2017-10-03T18:55:22.330896163 66.292883s notice: All client connections closed.
 2017-10-03T18:55:22.330913971 66.292900s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2017-10-03T18:55:22.338285060 66.300272s notice: Storage engine shut down.
+2017-10-04T09:36:42.284487911 0.074243s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-04T09:36:42.288069418 0.077827s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-04T09:36:42.288124400 0.077879s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-04T09:36:42.307642883 0.097398s info: Automatically using cache size of 4180 MB
+2017-10-04T09:36:42.309534764 0.099290s notice: Listening for intracluster connections on port 29015
+2017-10-04T09:36:42.361436495 0.151192s notice: Listening for client driver connections on port 28015
+2017-10-04T09:36:42.361578854 0.151334s notice: Listening for administrative HTTP connections on port 8081
+2017-10-04T09:36:42.361590173 0.151345s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-04T09:36:42.361592635 0.151347s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-04T09:36:42.361594995 0.151350s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-04T09:36:42.361597230 0.151352s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-04T09:36:42.361605167 0.151360s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-04T09:36:43.653119637 1.442874s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 46.
+2017-10-04T09:36:43.654602872 1.444358s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 46. Latest log index is 134.
+2017-10-04T09:36:43.724978253 1.514733s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 46.
+2017-10-04T09:36:43.726510008 1.516265s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 46. Latest log index is 134.
+2017-10-04T10:19:10.261894830 2548.051650s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-04T10:19:10.262131080 2548.051886s notice: Shutting down client connections...
+2017-10-04T10:19:10.262228453 2548.051983s notice: All client connections closed.
+2017-10-04T10:19:10.262235426 2548.051990s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-04T10:19:10.271216492 2548.060972s notice: Storage engine shut down.
