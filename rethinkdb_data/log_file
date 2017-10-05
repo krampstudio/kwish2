@@ -1036,3 +1036,171 @@
 2017-10-04T10:19:10.262228453 2548.051983s notice: All client connections closed.
 2017-10-04T10:19:10.262235426 2548.051990s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2017-10-04T10:19:10.271216492 2548.060972s notice: Storage engine shut down.
+2017-10-05T10:21:23.498137567 0.127236s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-05T10:21:23.501675725 0.130777s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-05T10:21:23.501734604 0.130832s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-05T10:21:23.524252614 0.153351s info: Automatically using cache size of 4405 MB
+2017-10-05T10:21:23.525760192 0.154858s notice: Listening for intracluster connections on port 29015
+2017-10-05T10:21:23.581212698 0.210311s notice: Listening for client driver connections on port 28015
+2017-10-05T10:21:23.581457040 0.210555s notice: Listening for administrative HTTP connections on port 8081
+2017-10-05T10:21:23.581474612 0.210572s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:21:23.581477749 0.210575s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:21:23.581480684 0.210578s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:21:23.581492926 0.210591s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-05T10:21:23.581496850 0.210595s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-05T10:21:24.658983488 1.288082s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 47.
+2017-10-05T10:21:24.662276618 1.291375s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 47. Latest log index is 137.
+2017-10-05T10:21:25.017551796 1.646650s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 47.
+2017-10-05T10:21:25.020517844 1.649616s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 47. Latest log index is 137.
+2017-10-05T10:24:34.926211220 191.555310s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-05T10:24:34.926451817 191.555550s notice: Shutting down client connections...
+2017-10-05T10:24:34.930672989 191.559772s notice: All client connections closed.
+2017-10-05T10:24:34.930693075 191.559791s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-05T10:24:34.939046919 191.568145s notice: Storage engine shut down.
+2017-10-05T10:25:08.532431004 0.075079s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-05T10:25:08.535173666 0.077824s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-05T10:25:08.535229320 0.077877s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-05T10:25:08.547795945 0.090444s info: Automatically using cache size of 4332 MB
+2017-10-05T10:25:08.548593534 0.091242s notice: Listening for intracluster connections on port 29015
+2017-10-05T10:25:08.595197361 0.137846s notice: Listening for client driver connections on port 28015
+2017-10-05T10:25:08.595390665 0.138039s notice: Listening for administrative HTTP connections on port 8081
+2017-10-05T10:25:08.595400654 0.138049s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:25:08.595402824 0.138051s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:25:08.595404939 0.138053s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:25:08.595406682 0.138055s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-05T10:25:08.595415160 0.138063s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-05T10:25:10.024621207 1.567269s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 48.
+2017-10-05T10:25:10.029901566 1.572550s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 48. Latest log index is 140.
+2017-10-05T10:25:10.465839370 2.008488s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 48.
+2017-10-05T10:25:10.467217391 2.009866s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 48. Latest log index is 140.
+2017-10-05T10:25:28.447288627 19.989937s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-05T10:25:28.447465855 19.990114s notice: Shutting down client connections...
+2017-10-05T10:25:28.452162318 19.994811s notice: All client connections closed.
+2017-10-05T10:25:28.452183540 19.994832s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-05T10:25:28.459328098 20.001977s notice: Storage engine shut down.
+2017-10-05T10:25:42.018004505 0.059784s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-05T10:25:42.020734396 0.062516s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-05T10:25:42.020786283 0.062566s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-05T10:25:42.033635060 0.075417s info: Automatically using cache size of 4359 MB
+2017-10-05T10:25:42.034535663 0.076315s notice: Listening for intracluster connections on port 29015
+2017-10-05T10:25:42.092321988 0.134102s notice: Listening for client driver connections on port 28015
+2017-10-05T10:25:42.092549153 0.134329s notice: Listening for administrative HTTP connections on port 8081
+2017-10-05T10:25:42.092553152 0.134333s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:25:42.092556017 0.134336s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:25:42.092558741 0.134338s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:25:42.092566983 0.134347s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-05T10:25:42.092570277 0.134350s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-05T10:25:43.069959196 1.111739s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 49.
+2017-10-05T10:25:43.072009185 1.113789s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 49. Latest log index is 143.
+2017-10-05T10:25:43.241402134 1.283182s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 49.
+2017-10-05T10:25:43.243438248 1.285218s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 49. Latest log index is 143.
+2017-10-05T10:25:51.598474422 9.640255s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-05T10:25:51.598625238 9.640405s notice: Shutting down client connections...
+2017-10-05T10:25:51.598934568 9.640715s notice: All client connections closed.
+2017-10-05T10:25:51.598940336 9.640720s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-05T10:25:51.609184994 9.650966s notice: Storage engine shut down.
+2017-10-05T10:26:12.316199366 0.044894s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-05T10:26:12.321047085 0.049745s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-05T10:26:12.321134459 0.049829s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-05T10:26:12.335603219 0.064298s info: Automatically using cache size of 4331 MB
+2017-10-05T10:26:12.336479561 0.065174s notice: Listening for intracluster connections on port 29015
+2017-10-05T10:26:12.395560165 0.124255s notice: Listening for client driver connections on port 28015
+2017-10-05T10:26:12.395805393 0.124500s notice: Listening for administrative HTTP connections on port 8081
+2017-10-05T10:26:12.395822097 0.124516s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:12.395825408 0.124520s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:12.395827733 0.124522s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:12.395830009 0.124525s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-05T10:26:12.395833215 0.124527s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-05T10:26:13.676908037 1.405603s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 50.
+2017-10-05T10:26:13.679066938 1.407761s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 50. Latest log index is 146.
+2017-10-05T10:26:14.286496591 2.015192s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 50.
+2017-10-05T10:26:14.289096156 2.017791s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 50. Latest log index is 146.
+2017-10-05T10:26:19.579637001 7.308332s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-05T10:26:19.579739603 7.308434s notice: Shutting down client connections...
+2017-10-05T10:26:19.579867794 7.308562s notice: All client connections closed.
+2017-10-05T10:26:19.579875332 7.308570s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-05T10:26:19.583512682 7.312207s notice: Storage engine shut down.
+2017-10-05T10:26:23.038041976 0.041279s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-05T10:26:23.041224850 0.044465s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-05T10:26:23.041291815 0.044528s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-05T10:26:23.054554452 0.057791s info: Automatically using cache size of 4332 MB
+2017-10-05T10:26:23.055444181 0.058681s notice: Listening for intracluster connections on port 29015
+2017-10-05T10:26:23.104555442 0.107792s notice: Listening for client driver connections on port 28015
+2017-10-05T10:26:23.104815400 0.108052s notice: Listening for administrative HTTP connections on port 8081
+2017-10-05T10:26:23.104829056 0.108066s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:23.104831902 0.108068s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:23.104834489 0.108071s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:23.104836901 0.108073s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-05T10:26:23.104839577 0.108076s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-05T10:26:24.905769682 1.909006s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 51.
+2017-10-05T10:26:24.908595036 1.911832s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 51. Latest log index is 149.
+2017-10-05T10:26:24.968157677 1.971395s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 51.
+2017-10-05T10:26:24.970922101 1.974159s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 51. Latest log index is 149.
+2017-10-05T10:26:27.230002842 4.233240s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-05T10:26:27.230229375 4.233466s notice: Shutting down client connections...
+2017-10-05T10:26:27.230469740 4.233707s notice: All client connections closed.
+2017-10-05T10:26:27.230570274 4.233807s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-05T10:26:27.237725227 4.240963s notice: Storage engine shut down.
+2017-10-05T10:26:29.766442484 0.061126s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-05T10:26:29.769702755 0.064390s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-05T10:26:29.769785881 0.064469s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-05T10:26:29.785513455 0.080197s info: Automatically using cache size of 4337 MB
+2017-10-05T10:26:29.786327923 0.081011s notice: Listening for intracluster connections on port 29015
+2017-10-05T10:26:29.832343875 0.127027s notice: Listening for client driver connections on port 28015
+2017-10-05T10:26:29.832583659 0.127267s notice: Listening for administrative HTTP connections on port 8081
+2017-10-05T10:26:29.832703789 0.127387s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:29.832706248 0.127389s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:29.832708237 0.127391s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:29.832710633 0.127393s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-05T10:26:29.832712314 0.127395s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-05T10:26:31.718519156 2.013203s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 52.
+2017-10-05T10:26:31.718664003 2.013347s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 52.
+2017-10-05T10:26:31.721606030 2.016290s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 52. Latest log index is 152.
+2017-10-05T10:26:31.722569264 2.017253s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 52. Latest log index is 152.
+2017-10-05T10:26:35.277502996 5.572187s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-05T10:26:35.277741269 5.572425s notice: Shutting down client connections...
+2017-10-05T10:26:35.278172065 5.572855s notice: All client connections closed.
+2017-10-05T10:26:35.278185950 5.572869s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-05T10:26:35.285120330 5.579804s notice: Storage engine shut down.
+2017-10-05T10:26:50.791003663 0.040540s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-05T10:26:50.793640849 0.043179s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-05T10:26:50.793691587 0.043227s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-05T10:26:50.805452204 0.054990s info: Automatically using cache size of 4362 MB
+2017-10-05T10:26:50.807642858 0.057179s notice: Listening for intracluster connections on port 29015
+2017-10-05T10:26:50.854129540 0.103666s notice: Listening for client driver connections on port 28015
+2017-10-05T10:26:50.854379293 0.103915s notice: Listening for administrative HTTP connections on port 8081
+2017-10-05T10:26:50.854387942 0.103924s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:50.854390369 0.103926s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:50.854392238 0.103928s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:26:50.854393938 0.103930s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-05T10:26:50.854395853 0.103932s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-05T10:26:52.075449325 1.324985s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 53.
+2017-10-05T10:26:52.077625526 1.327161s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 53. Latest log index is 155.
+2017-10-05T10:26:52.727425785 1.976963s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 53.
+2017-10-05T10:26:52.730021685 1.979558s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 53. Latest log index is 155.
+2017-10-05T10:26:58.662572423 7.912109s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-05T10:26:58.662731816 7.912268s notice: Shutting down client connections...
+2017-10-05T10:26:58.663366734 7.912903s notice: All client connections closed.
+2017-10-05T10:26:58.663378211 7.912914s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-05T10:26:58.670719445 7.920256s notice: Storage engine shut down.
+2017-10-05T10:28:02.988124462 0.292251s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-10-05T10:28:02.991353236 0.295483s notice: Running on Linux 4.4.0-97-generic x86_64
+2017-10-05T10:28:02.991420059 0.295546s notice: Loading data from directory /home/bertrand/dev/projects/kwish2/rethinkdb_data
+2017-10-05T10:28:03.007435157 0.311562s info: Automatically using cache size of 4337 MB
+2017-10-05T10:28:03.008687126 0.312814s notice: Listening for intracluster connections on port 29015
+2017-10-05T10:28:03.069626017 0.373752s notice: Listening for client driver connections on port 28015
+2017-10-05T10:28:03.069921507 0.374048s notice: Listening for administrative HTTP connections on port 8081
+2017-10-05T10:28:03.070125796 0.374252s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:28:03.070130812 0.374257s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:28:03.070135100 0.374261s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-10-05T10:28:03.070139700 0.374266s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-10-05T10:28:03.070142749 0.374269s notice: Server ready, "bertrand_oat_6uj" d5218bdc-6811-44f8-8fde-595146c66a43
+2017-10-05T10:28:04.406989338 1.711116s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: Starting a new Raft election for term 54.
+2017-10-05T10:28:04.409541197 1.713668s info: Table db8b695b-9109-44be-aa0b-12696f52d13f: This server is Raft leader for term 54. Latest log index is 158.
+2017-10-05T10:28:04.843788770 2.147916s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: Starting a new Raft election for term 54.
+2017-10-05T10:28:04.844945935 2.149073s info: Table 335c3c48-651f-469a-bcb7-a46f852b8fa3: This server is Raft leader for term 54. Latest log index is 158.
+2017-10-05T10:28:10.940410472 8.244537s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-10-05T10:28:10.940562067 8.244688s notice: Shutting down client connections...
+2017-10-05T10:28:10.942494360 8.246621s notice: All client connections closed.
+2017-10-05T10:28:10.942513387 8.246639s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-10-05T10:28:10.949175566 8.253302s notice: Storage engine shut down.

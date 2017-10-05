@@ -42,7 +42,7 @@ const getKitemContent = item => {
                     <li><a href="#" class="book"><span class="icon icon-lock"></span> Réserver</a></li>
                     <li><a href="#" class="buy"><span class="icon icon-credit-card"></span> Acheter</a></li>`;
         }
-        content += `<li><a href="#" class="participate"><span class="icon icon-squirrel"></span> Participer</a></li>
+        content += `<li><a href="https://www.leetchi.com/c/naissance-de-b-chevrier-boquet"><span class="icon icon-squirrel"></span> Participer</a></li>
             </ul>`;
     }
     return content;
@@ -102,12 +102,6 @@ const buyItem = itemId => {
     }).open();
 };
 
-const participate = () => {
-    confirmComponent('Vous souhaitez participer ?', 'Vous serez redirigé sur notre cagnotte Leetchi.', () => {
-        window.open('https://www.leetchi.com/c/naissance-de-b-chevrier-boquet', '_blank');
-    }).open();
-};
-
 const kitemActions = () => {
 
     kitemsContainer.addEventListener('click', e => {
@@ -119,10 +113,6 @@ const kitemActions = () => {
             if(e.target.matches('.buy')) {
                 e.preventDefault();
                 buyItem(e.target.closest('.kitem').dataset.id);
-            }
-            if(e.target.matches('.participate')) {
-                e.preventDefault();
-                participate(e.target.closest('.kitem').dataset.id);
             }
         }
     });
